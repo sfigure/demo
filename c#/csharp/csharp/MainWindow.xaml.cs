@@ -24,5 +24,17 @@ namespace csharp
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (username.Text == "admin" && password.Password == "admin") {
+                MessageBox.Show(this.username.Text + "  " + this.password.Password);
+            }
+            else
+            {
+                MessageBox.Show("用户名密码错误");
+            }
+           
+        }
     }
 }
