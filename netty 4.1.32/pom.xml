@@ -12,9 +12,8 @@
 
         <dependency>
             <groupId>io.netty</groupId>
-            <artifactId>netty-tarball</artifactId>
+            <artifactId>netty-all</artifactId>
             <version>4.1.32.Final</version>
-            <type>pom</type>
         </dependency>
 
         <dependency>

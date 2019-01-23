@@ -20,8 +20,8 @@ public class RedissonX {
                 .setConnectionMinimumIdleSize(3)
                 .setConnectionPoolSize(3)
                 .setAddress("redis://127.0.0.1:6379");
-        RedissonClient redisson = Redisson.create();
-        RSet<Integer> list = redisson.getSet("list", IntegerCodec.INSTANCE);
+        RedissonClient redissonClient = Redisson.create();
+        RSet<Integer> list = redissonClient.getSet("list", IntegerCodec.INSTANCE);
         list.add(4);
         System.out.println(list.readSort(SortOrder.ASC));
     }
