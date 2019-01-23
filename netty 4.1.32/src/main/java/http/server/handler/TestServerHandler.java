@@ -6,9 +6,12 @@ import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 import io.netty.util.CharsetUtil;
 
+import java.net.InetSocketAddress;
+
 import static io.netty.handler.codec.http.HttpHeaderNames.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_LENGTH;
 import static io.netty.handler.codec.http.HttpHeaderNames.CONTENT_TYPE;
+import static io.netty.handler.codec.http.HttpHeaderValues.CLOSE;
 import static io.netty.handler.codec.http.HttpHeaderValues.KEEP_ALIVE;
 import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 
@@ -27,11 +30,14 @@ public class TestServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         System.out.println("处理请求");
+        String host = ((InetSocketAddress)ctx.channel().remoteAddress()).getAddress().getHostAddress();
+        int port = ((InetSocketAddress)ctx.channel().remoteAddress()).getPort();
+    
         if (msg instanceof FullHttpRequest) {
             FullHttpRequest req = (FullHttpRequest) msg;
             boolean keepAlive = HttpUtil.isKeepAlive(req);
             ByteBuf byteBuf = Unpooled.buffer(1024);
-            byteBuf.writeCharSequence("hi netty", CharsetUtil.UTF_8);
+            byteBuf.writeCharSequence("hi guest host: "+host+" port: "+port+" url:"+ req.uri(), CharsetUtil.UTF_8);
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, OK, byteBuf);
             if (keepAlive) {
                 response.headers().set(CONTENT_TYPE, "text/html");
