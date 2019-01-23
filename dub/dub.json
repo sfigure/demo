@@ -1,0 +1,9 @@
+{
+	"name": "dub",
+	"authors": [
+		"Administrator"
+	],
+	"description": "A minimal D application.",
+	"copyright": "Copyright © 2019, Administrator",
+	"license": "proprietary"
+}
