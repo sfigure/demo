@@ -1,6 +1,9 @@
-﻿using System;
+﻿using csharp.dto;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IniParser;
+using IniParser.Model;
 
 namespace csharp
 {
@@ -20,21 +25,38 @@ namespace csharp
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        IniData data = new FileIniDataParser().ReadFile("config/main.ini");
         public MainWindow()
         {
             InitializeComponent();
+            var parser = new FileIniDataParser();
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (username.Text == "admin" && password.Password == "admin") {
-                MessageBox.Show(this.username.Text + "  " + this.password.Password);
-            }
-            else
+           Login(username.Text, password.Password);
+
+        }
+
+        private async void Login(String username, String password) {
+            HttpClient httpClient = new HttpClient();
+            string body = await httpClient.GetStringAsync(data.GetKey("server") + "/api/v1/login?username=" + username + "&password=" + password);
+            Response<String> rep = JsonConvert.DeserializeObject<Response<String>>(body);
+            if (rep.code == 0)
             {
-                MessageBox.Show("用户名密码错误");
+                new System.IO.DirectoryInfo(data.GetKey("cache_dir") +"/" + rep.body).Create();
+                new System.IO.DirectoryInfo(data.GetKey("data_dir")+"/" + rep.body).Create();
+                new System.IO.DirectoryInfo(data.GetKey("log_dir")+"/" + rep.body).Create();
+                Workspace workspace = new Workspace();
+                workspace.Show();
+                this.Hide();
             }
-           
+            else {
+                MessageBox.Show(rep.msg);
+            }
+     
         }
     }
 }

@@ -13,5 +13,28 @@ namespace csharp
     /// </summary>
     public partial class App : Application
     {
+
+        protected override void OnActivated(EventArgs e)
+        {
+            base.OnActivated(e);
+        }
+
+        protected override void OnDeactivated(EventArgs e)
+        {
+            base.OnDeactivated(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            MessageBox.Show("Exit");
+        }
+
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            Workspace workspace = new Workspace();
+            workspace.Show();
+        }
     }
 }

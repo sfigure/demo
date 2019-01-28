@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
+        this.button3.setOnClickListener {
+                intent.setClass(this,ListActivity::class.java);
+                startActivity(intent)
+        }
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 }
