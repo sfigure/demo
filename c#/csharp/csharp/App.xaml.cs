@@ -33,6 +33,7 @@ namespace csharp
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            //判断用户登录 启动登录窗口还是 工作窗口
             Workspace workspace = new Workspace();
             workspace.Show();
         }

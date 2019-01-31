@@ -5,8 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:csharp"
         mc:Ignorable="d"
-        Title="workspace" Height="450" Width="800">
+        Title="workspace" Height="556.3" Width="1008.1">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="355*"/>
+            <RowDefinition Height="171*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110*"/>
+            <ColumnDefinition Width="391*"/>
+        </Grid.ColumnDefinitions>
+        <ListView HorizontalAlignment="Left" Height="526" VerticalAlignment="Top" Width="220" Grid.RowSpan="2">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <RichTextBox Grid.Column="1" HorizontalAlignment="Left" Height="171" Margin="0,355,-0.4,0" VerticalAlignment="Top" Width="782" Grid.RowSpan="2">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                    <InlineUIContainer>
+                        <Image Height="100" Width="100" Source="images/test.jpg" Stretch="Fill"/>
+                    </InlineUIContainer>
+                    1111
+                </Paragraph>
+
+             
+                <List>
+                    <ListItem>
+                        <Paragraph>ListItem 1</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>ListItem 2</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>ListItem 3</Paragraph>
+                    </ListItem>
+
+                </List>
+            </FlowDocument>
+        </RichTextBox>
+        <RichTextBox HorizontalAlignment="Left" Height="355" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="782" Grid.Column="1" TextChanged="RichTextBox_TextChanged">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+
     </Grid>
 </Window>

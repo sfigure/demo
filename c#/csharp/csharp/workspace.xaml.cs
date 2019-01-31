@@ -26,6 +26,10 @@ namespace csharp
         {
             InitializeComponent();
         }
-        
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
