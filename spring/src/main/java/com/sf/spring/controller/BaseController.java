@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class BaseController {
-    ResponseDto sussess(Object data){
+    ResponseDto success(Object data){
         ResponseDto responseDto=new ResponseDto();
         responseDto.setCode(0);
         responseDto.setMsg("");
