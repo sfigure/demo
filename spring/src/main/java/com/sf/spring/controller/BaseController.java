@@ -17,6 +17,13 @@ public class BaseController {
         responseDto.setData(data);
         return  responseDto;
     }
+    ResponseDto success(){
+        ResponseDto responseDto=new ResponseDto();
+        responseDto.setCode(0);
+        responseDto.setMsg("");
+        responseDto.setData("");
+        return  responseDto;
+    }
     ResponseDto error(String msg){
         ResponseDto responseDto=new ResponseDto();
         responseDto.setCode(1);

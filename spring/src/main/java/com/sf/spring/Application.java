@@ -1,5 +1,6 @@
 package com.sf.spring;
 
+import com.sf.spring.annotation.EnableTest;
 import com.sf.spring.dao.UserDao;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 
 /**
@@ -17,6 +19,8 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @MapperScan("com.sf.spring.dao")
+@EnableAsync
+@EnableTest
 public class Application{
     
     public static void main(String[] args) {
