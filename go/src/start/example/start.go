@@ -88,7 +88,7 @@ func main() {
 		api.Get("/login", func(c martini.Context, req *http.Request) string {
 			if kv.Exists("user@" + req.FormValue("username")).Val() > 0 {
 				password := kv.Get("user@" + req.FormValue("username"));
-				if req.FormValue("password") == password.Val() {
+				if req.FormValue(	"password") == password.Val() {
 					token := uuid.NewV4().String();
 					kv.Set("token@"+token, req.FormValue("username"), 0);
 					return successV1(token)
@@ -149,7 +149,7 @@ func main() {
 			}
 		})
 		//添加好友
-		api.Get("/add_friend", func(c martini.Context, req *http.Request) string {
+		api.Get("/add_friend", func(c martini.Context, req *http.Request) string 		{
 			if kv.Exists("token@" + req.FormValue("token")).Val() != 0 {
 				token := "token@" + req.FormValue("token");
 				user:=kv.Get(token).Val();
