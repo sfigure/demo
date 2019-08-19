@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(new MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: new MyHomePage(title: '这是标题'),
+      home: new MyHomePage(title: '这是标11题'),
     );
   }
 }
@@ -26,83 +27,63 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  final String title1="标题11";
-  void _incrementCounter() {
+  final String title1 = "标题11";
+  final List<String> items = new List();
+
+  @override
+  void initState() {
     setState(() {
-      _counter++;
+      items.add("a");
+      items.add("b");
     });
+    super.initState();
+    debugPrint(">>>initState<<<");
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return new Scaffold(
-      appBar: new AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: new Text("标题11"),
-      ),
-      body: new Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          children: <Widget>[
-            new Column(
-
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                new Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.display1,
-                ),
-                new Text(
-                  title1
-                ),
-                new Text(
-                  '按钮点击次数:',
-                ),
-              ],
-            ),
-            new Column(
-
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                new Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.display1,
-                ),
-                new Text(
-                    title1
-                ),
-                new Text(
-                  '按钮点击次数:',
-                ),
-              ],
-            ),
-          ],
+        body: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        Row(children: <Widget>[
+          Container(
+              color: const Color(0xFF00FF00),
+              width: 48.0,
+              height: 48.0,
+              child: Text("1")),
+          Padding(
+            padding: EdgeInsets.only(
+                left: 10.0, top: 20.0, right: 30.0, bottom: 40.0),
+            child: Text("2"),
+          ),
+          Center(
+            child: Text("3"),
+          ),
+          SizedBox(
+            width: 20.0,
+            height: 30.0,
+            child: const Card(child: Text('4')),
+          ),
+          Expanded(child: Text("5"))
+        ]),
+        Container(
+          height: 50.0,
+          child:ListView.builder(
+          scrollDirection:Axis.horizontal,
+          itemExtent: 80.0,
+          itemBuilder: (BuildContext context, int index) {
+            return Text('nav $index',textAlign: TextAlign.center,);
+          },
         ),
-
-      ),
-      bottomNavigationBar:new ButtonBar(children: <Widget>[
-        Row(
-          children: <Widget>[
-            new Text("111"),
-            new Text("111"),
-            new Text("111"),
-          ],
         ),
-      ],),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: new Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+    Expanded(child:ListView.builder(
+    itemExtent: 80.0,
+    itemBuilder: (BuildContext context, int index) {
+        return Text('record $index',textAlign: TextAlign.left,);
+    },
+    ))
+      ],
+    ));
   }
 }

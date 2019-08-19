@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+group 'com.crtrpt.hello'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+jar {
+    manifest {
+        System.out.println(">>>>>")
+        attributes 'Main-Class': 'Main'
+    }
+}

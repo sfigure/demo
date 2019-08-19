@@ -1,0 +1,4 @@
+<class name="Test" table="Test">
+  <id name="id" column="EVENT_ID">
+  </id>
+</class>

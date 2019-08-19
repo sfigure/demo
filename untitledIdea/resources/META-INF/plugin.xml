@@ -1,0 +1,42 @@
+<idea-plugin>
+  <id>com.bitwanted.ideaplugin</id>
+  <name>Apollo</name>
+  <version>0.1.9</version>
+  <vendor email="support@bitwanted.com" url="http://bitwanted.com">bitwanted</vendor>
+
+  <description><![CDATA[
+      阿波罗阿波罗阿波罗阿波罗阿波罗阿波罗<br/>
+      阿波罗阿波罗阿波罗阿波罗阿波罗阿波罗<br/>
+      阿波罗阿波罗阿波罗阿波罗阿波罗阿波罗<br/>
+      阿波罗阿波罗阿波罗阿波罗阿波罗阿波罗<br/>
+      阿波罗阿波罗阿波罗阿波罗阿波罗阿波罗<br/>
+      阿波罗阿波罗阿波罗阿波罗阿波罗阿波罗<br/>
+    ]]></description>
+
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <group id="MyPlugin.SampleMenu" text="Greeting" description="Greeting menu">
+      <add-to-group group-id="HelpMenu" anchor="before" relative-to-action="About"/>
+      <action id="Myplugin.Textboxes" class="main.java.HelloAction" text="Hello"
+        description="Says hello"/>
+      <action id="Myplugin.Dialogs" class="main.java.TextBoxes" text="Show _Dialog"
+        description="A test menu item"/>
+    </group>
+  </actions>
+
+
+</idea-plugin>

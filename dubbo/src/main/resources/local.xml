@@ -1,0 +1,4 @@
+<bean id=“xxxService” class=“com.xxx.XxxServiceImpl” />
+<bean id=“xxxAction” class=“com.xxx.XxxAction”>
+<property name=“xxxService” ref=“xxxService” />
+        </bean>
